@@ -10,10 +10,10 @@ function App() {
   const awayScore = 0;
   const [countAway, setCountAway] = useState(awayScore);
 
-  // console.log('count away: ',countAway)
-  // console.log('count home: ',countHome)
-  // console.log('set count away: ',setCountAway)
-  // console.log('set count home: ',setCountHome)
+  const resetScore = () => {
+    setCountHome(0);
+    setCountAway(0);
+  }
 
   return (
     <div className="container">
@@ -42,8 +42,9 @@ function App() {
         </div>
         <div className="awayButtons">
           <button className="awayButtons__touchdown" onClick={() => setCountAway(countAway + 7)}>Away Touchdown</button>
-          <button className="awayButtons__fieldGoal" onClick={() => setCountAway(countAway + 3)}>Away Field Goal</button>
+          <button className="awayButtons__fieldGoal" onClick={() => setCountAway(countAway + 3)}>Away Field Goal</button>   
         </div>
+        <button onClick={resetScore}>Reset Score</button>
       </section>
     </div>
   );
