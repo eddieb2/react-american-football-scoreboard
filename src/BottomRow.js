@@ -1,12 +1,30 @@
-import React from "react";
+import React, {useState} from "react";
 import "./App.css";
 
 const BottomRow = () => {
+
+  let quarterValue = 1;
+  const [quarterCount, setQuarterCount] = useState(quarterValue);
+
+  // Built-in Reset for Quarter Changer
+  if(quarterCount > 4){
+    setQuarterCount(quarterCount - 4);
+  }
+
+  let downValue = 1;
+  const [downCount, setDownCount] = useState(downValue);
+
+  // Built-in Reset for Down Changer
+  if(downCount > 4){
+    setDownCount(downCount - 4);
+  }
+
   return (
     <div className="bottomRow">
       <div className="down">
         <h3 className="down__title">Down</h3>
-        <div className="down__value">3</div>
+        <div className="down__value">{downCount}</div>
+        <button onClick={() => setDownCount(downCount + 1)}>Change</button>
       </div>
       <div className="toGo">
         <h3 className="toGo__title">To Go</h3>
@@ -18,7 +36,8 @@ const BottomRow = () => {
       </div>
       <div className="quarter">
         <h3 className="quarter__title">Quarter</h3>
-        <div className="quarter__value">4</div>
+        <div className="quarter__value">{quarterCount}</div>
+        <button onClick={() => setQuarterCount(quarterCount + 1)}>Change</button>
       </div>
     </div>
   );
